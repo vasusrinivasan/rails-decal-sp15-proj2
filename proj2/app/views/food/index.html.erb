@@ -1,0 +1,6 @@
+<h1>Food Memes</h1>
+<% @foods.each do |food| %>
+  <h3><%= food.name %></h3>
+  <img src= <%= food.imageurl %> style="width: 50%; height: 50%" />
+  <p><%= food.description %></p>
+<% end %>

@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @food.name %>
+</p>
+
+<p>
+  <img src= <%= @food.imageurl %> style="width: 50%; height: 50%"/>
+</p>
+
+<%= link_to "Delete Food", food_delete_path(:id => @food.id) %> |
+<%= link_to 'Edit', edit_food_path(@food) %> |
+<%= link_to 'Back', food_path %>

@@ -4,6 +4,7 @@
 
 <%= link_to "Edit Food", edit_food_path(@food.id) %>
 <%= link_to "Delete Food", food_path(:id => @food.id), method: :delete %>
+<%= link_to "Back", food_index_path() %>
 
 <% @comments.each do |comment| %>
   <p><%= comment.description %></p>

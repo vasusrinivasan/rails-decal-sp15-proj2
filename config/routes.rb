@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :food
-  get 'food/:id/delete' => 'food#delete', :as => :food_delete
+  # get 'food/:id/delete' => 'food#delete', :as => :food_delete
+  put 'food/:id/comment_create' => 'comment#create', :as =>:comment_create
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

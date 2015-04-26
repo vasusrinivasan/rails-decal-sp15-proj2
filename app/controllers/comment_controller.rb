@@ -1,6 +1,7 @@
 class CommentController < ApplicationController
   def create
     Comment.create(content: params[:content], food_id: params[:food_id])
+    redirect_to food_show
   end
 
   def delete

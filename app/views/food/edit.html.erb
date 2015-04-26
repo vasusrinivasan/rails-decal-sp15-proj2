@@ -1,2 +1,3 @@
-<h1>Food#edit</h1>
-<p>Find me in app/views/food/edit.html.erb</p>
+<h1>Edit <%= @food.name %></h1>
+<%= render 'form' %>
+<%= link_to 'Back', food_path %>

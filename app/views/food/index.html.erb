@@ -1,4 +1,6 @@
 <h1>Food Memes</h1>
+<%= link_to 'Create a New Food', foods_new_path %>
+
 <% @foods.each do |food| %>
   <h3><%= link_to food.name, food %></h3>
   <img src= <%= food.imageurl %> style="width: 50%; height: 50%" />

@@ -7,10 +7,11 @@
 <%= link_to "Back", food_index_path() %>
 
 <% @comments.each do |comment| %>
-  <p><%= comment.description %></p>
+  <p><%= comment.content %>
+  <br><%= link_to "Delete Comment", comment_delete_path(:id => comment.id, :food_id => @food.id) %></p>
 <% end %>
 
-<%= form_for :comment, comment_create_path(:food_id => @food.id) do |f| %>
-  Content: <%= f.text_field :content %><br />
-  <%= f.submit %>
+<%= form_for :comment, :url => comment_create_path(:food_id => @food.id) do |f| %>
+  Comment: <%= f.text_field :content %>
+  <br><%= f.submit "Post Comment" %>
 <% end %>

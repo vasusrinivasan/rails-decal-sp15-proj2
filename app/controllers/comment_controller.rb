@@ -1,11 +1,13 @@
 class CommentController < ApplicationController
   def create
-    Comment.create(content: params[:content], food_id: params[:food_id])
-    redirect_to food_show
+    Comment.create(content: params[:comment][:content], food_id: params[:food_id])
+    redirect_to food_path(:id => params[:food_id]), method: :show
   end
 
   def delete
-    Comment.destroy(params[:id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to food_path(:id => params[:food_id]), method: :show
   end
 
   def edit
@@ -13,4 +15,5 @@ class CommentController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.content = @new_content
     @comment.save!
+  end
 end

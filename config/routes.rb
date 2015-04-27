@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :food
   # get 'food/:id/delete' => 'food#delete', :as => :food_delete
   post 'food/:id/comment_create' => 'comment#create', :as => :comment_create

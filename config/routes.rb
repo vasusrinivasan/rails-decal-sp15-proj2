@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # get 'food/:id/delete' => 'food#delete', :as => :food_delete
   post 'food/:id/comment_create' => 'comment#create', :as => :comment_create
   get 'food/:id/comment_delete' => 'comment#delete', :as => :comment_delete
+  get 'food/new' => 'food#new', :as => :foods
+  post 'food/new' => 'food#create'
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

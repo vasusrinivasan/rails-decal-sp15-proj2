@@ -1,5 +1,5 @@
 <h1>Food Memes</h1>
-<%= link_to 'Create a New Food', foods_new_path %>
+<%= link_to 'Create a New Food', foods_path %>
 
 <% @foods.each do |food| %>
   <h3><%= link_to food.name, food %></h3>

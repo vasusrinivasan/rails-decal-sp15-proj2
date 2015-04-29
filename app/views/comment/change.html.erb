@@ -1,0 +1,4 @@
+<%= form_for :comment, :url => comment_edit_path(:current => @comment, :food_id => @food_id) do |f| %>
+  Comment: <%= f.text_field  :content, value: @content %>
+  <br><%= f.submit "Submit Change" %>
+<% end %>

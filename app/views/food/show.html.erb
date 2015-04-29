@@ -2,21 +2,23 @@
 	<img src= <%= @food.imageurl %> style="max-width: 100%; max-height: 100%" />
 </div>
 
-<div style="width: 700px; display: inline-block; margin:50px; vertical-align: middle;">
+<div style="width: 600px; display: inline-block; margin:50px; vertical-align: middle;">
 
 <h2><%= @food.name %></h2></center>
 <% if @food.user_id %>
-  <h5>by <%= @food_user.name %></h5>
+  <h5>by <%= link_to @food_user.name, user_path(@food_user.id) %></h5>
 <% end %>
 
 <p><%= @food.description %></p>
 
+<div style="margin-left: 20px">
 <% if user_signed_in? %>
   <% if current_user.id == @food.id %>
 		<li><%= link_to "Edit This Food", edit_food_path(@food.id) %></li>
 		<li><%= link_to "Delete This Food", food_path(:id => @food.id), method: :delete %></li>
 		<% end %>
  <%end %>
+</div>
 <br />
 <br />
 <%= link_to "<< Back to Gallery", food_index_path() %>
@@ -25,7 +27,7 @@
 <div style="margin: 50px">
   <h3>Comments</h3> <br /> 
 <% @comments.each do |comment| %>
-  <p><strong><%= comment[:user_name] %></strong>
+  <p><strong><%= link_to comment.user_name, user_path(comment.user_id) %></strong>
   <% if comment.updated_at == comment.created_at %>
     (<%= comment.created_at %>)
   <% else %>

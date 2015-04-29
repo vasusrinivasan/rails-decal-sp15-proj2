@@ -2,20 +2,26 @@
 <img src= <%= @food.imageurl %> style="width: 50%; height: 50%" />
 <p><%= @food.description %></p>
 
-<%= link_to "Edit Food", edit_food_path(@food.id) %>
-<%= link_to "Delete Food", food_path(:id => @food.id), method: :delete %>
+<% if user_signed_in? %>
+  <%= link_to "Edit Food", edit_food_path(@food.id) %>
+  <%= link_to "Delete Food", food_path(:id => @food.id), method: :delete %>
+<% end %>
 <%= link_to "Back", food_index_path() %>
 
 <% @comments.each do |comment| %>
   <p><%= comment.content %>
-  <% if comment.user_id == current_user.id and not current_user.id.nil? %>
-	<br><%= link_to "Edit Comment", comment_change_path(:id => comment.id, :food_id => @food.id, :content => comment.content) %>
-	<%= link_to "Delete Comment", comment_delete_path(:id => comment.id, :food_id => @food.id) %>
+  <% if user_signed_in? %>
+    <% if comment.user_id == current_user.id %>
+	  <br><%= link_to "Edit Comment", comment_change_path(:id => comment.id, :food_id => @food.id, :content => comment.content) %>
+	  <%= link_to "Delete Comment", comment_delete_path(:id => comment.id, :food_id => @food.id) %>
+	<% end %>
   <% end %>
   </p>
 <% end %>
 
-<%= form_for :comment, :url => comment_create_path(:user_id => current_user.id, :food_id => @food.id) do |f| %>
-  Comment: <%= f.text_field :content %>
-  <br><%= f.submit "Post Comment" %>
+<% if user_signed_in? %>
+  <%= form_for :comment, :url => comment_create_path(:user_id => current_user.id, :food_id => @food.id) do |f| %>
+    Comment: <%= f.text_field :content %>
+    <br><%= f.submit "Post Comment" %>
+  <% end %>
 <% end %>

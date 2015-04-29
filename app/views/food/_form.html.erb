@@ -1,4 +1,7 @@
-<%= form_for(@food) do |f| %>
+<p><% if flash[:errors] %>
+  <%= flash[:errors] %>
+<% end %></p>
+<%= form_for(@food, {:user_id => current_user.id}) do |f| %>
    <div class="name">
      <%= f.label :name %>
      <%= f.text_field :name %>

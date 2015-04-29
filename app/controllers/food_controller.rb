@@ -6,7 +6,7 @@ class FoodController < ApplicationController
   def show
     @food = Food.find(params[:id])
     @comments = Comment.where(:food_id => @food.id)
-    @food_user = User.where(:id => @food.user_id)
+    @food_user = User.find(@food.user_id)
   end
   
   def new
@@ -14,10 +14,13 @@ class FoodController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @food = Food.new(food_params)
+    @food.user_id = @user.id
     if @food.save
       redirect_to(root_path)
     else
+      flash[:errors] = @food.errors.messages
       render('new')
     end
   end

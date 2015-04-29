@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :foods
+  validates :email, :password, :name, presence: true
 end

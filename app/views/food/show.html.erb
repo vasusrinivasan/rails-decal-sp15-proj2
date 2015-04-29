@@ -47,7 +47,7 @@
 <% if user_signed_in? %>
   <%= form_for :comment, :url => comment_create_path(:user_id => current_user.id, :food_id => @food.id, :user_name => current_user.name) do |f| %>
     Comment: <%= f.text_field :content %>
-    <br><%= f.submit "Post Comment" %>
+    <%= f.submit "Post Comment" %>
   <% end %>
 <% else %>
   <br><%= link_to 'Log In', new_user_session_path %></li>

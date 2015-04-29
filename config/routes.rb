@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users
   resources :food
   # get 'food/:id/delete' => 'food#delete', :as => :food_delete

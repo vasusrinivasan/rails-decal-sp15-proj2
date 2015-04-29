@@ -1,11 +1,11 @@
 <%# navigation styled for Zurb Foundation 5 %>
-<nav class="top-bar" data-topbar>
+<nav class="top-bar" data-topbar style="height: 80px">
   <ul class="title-area">
-    <li style="margin:10px;"><%= link_to 'Foodie', root_path %></li>
+    <li style="margin-left:30px; margin-top:15px; font-size:30px"><%= link_to 'Foodie', root_path %></li>
     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
   <div class="top-bar-section">
-    <ul class="right">
+    <ul class="right" style="margin-top:20px;">
       <%= render 'layouts/navigation_links' %>
     </ul>
   </div>

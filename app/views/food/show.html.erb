@@ -1,8 +1,9 @@
-<div style="width: 400px; height: 350px; display: inline-block; margin: 50px">
+<div style="width: 400px; display: inline-block; margin: 50px; vertical-align: top;">
 	<img src= <%= @food.imageurl %> style="max-width: 100%; max-height: 100%" />
 </div>
 
-<div style="width:400px; height:350px; display: inline-block; margin: 50px; vertical-align:middle">
+<div style="width: 700px; display: inline-block; margin:50px; vertical-align: middle;">
+
 <h2><%= @food.name %></h2></center>
 
 <p><%= @food.description %></p>
@@ -18,8 +19,16 @@
 <%= link_to "<< Back to Gallery", food_index_path() %>
 </div>
 
+<div style="margin: 50px">
+  <h3>Comments</h3> <br /> 
 <% @comments.each do |comment| %>
-  <p><%= comment[:user_name] %>: <%= comment.content %>
+  <p><strong><%= comment[:user_name] %></strong>
+  <% if comment.updated_at == comment.created_at %>
+    (<%= comment.created_at %>)
+  <% else %>
+    (updated <%= comment.updated_at %>)
+  <% end %>
+  : <%= comment.content %>
   <% if user_signed_in? %>
     <% if comment.user_id == current_user.id %>
 	  <br><%= link_to "Edit", comment_change_path(:id => comment.id, :food_id => @food.id, :content => comment.content) %> | 
@@ -29,6 +38,7 @@
 	<% end %>
   <% end %>
   </p>
+  <hr />
 <% end %>
 
 <% if user_signed_in? %>

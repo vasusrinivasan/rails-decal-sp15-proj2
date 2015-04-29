@@ -8,10 +8,14 @@
 
 <% @comments.each do |comment| %>
   <p><%= comment.content %>
-  <br><%= link_to "Delete Comment", comment_delete_path(:id => comment.id, :food_id => @food.id) %></p>
+  <% if comment.user_id == current_user.id and not current_user.id.nil? %>
+	<br><%= link_to "Edit Comment", comment_change_path(:id => comment.id, :food_id => @food.id, :content => comment.content) %>
+	<%= link_to "Delete Comment", comment_delete_path(:id => comment.id, :food_id => @food.id) %>
+  <% end %>
+  </p>
 <% end %>
 
-<%= form_for :comment, :url => comment_create_path(:food_id => @food.id) do |f| %>
+<%= form_for :comment, :url => comment_create_path(:user_id => current_user.id, :food_id => @food.id) do |f| %>
   Comment: <%= f.text_field :content %>
   <br><%= f.submit "Post Comment" %>
 <% end %>

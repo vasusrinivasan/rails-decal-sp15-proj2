@@ -1,11 +1,16 @@
-<h1>THIS IS OUR HOME PAGE FOR NOW LMAO</h1>
-<img src="http://24.media.tumblr.com/3349900dbcc5be7a71942dbd73d513b3/tumblr_n19031ewYm1qh2ckoo10_500.jpg">
-<%= link_to 'Food Gallery', food_index_path() %>
+<center><h1 style="margin-top: 30px;">Welcome to Foodie!</h1></center>
 
-<% if user_signed_in? %>
-  <li><%= link_to 'Edit User', edit_user_registration_path %></li>
-  <li><%= link_to 'Log Out', destroy_user_session_path, :method=>'delete' %></li>
-<% else %>
-  <li><%= link_to 'Log In', new_user_session_path %></li>
-  <li><%= link_to 'Join Food Blog', new_user_registration_path %></li>
+<% @foods.each do |food| %>
+	<div style="display: inline-block; max-width:100%; max-height:100%; padding: 10px">
+	<% @url = food[:imageurl] %>
+	<a href=<%= food_path(food[:id]) %>>
+		<img src=<%= @url %> width="240px" height="200px"/>
+	</a>
+	<center>
+		<a href=<%= food_path(food[:id]) %>>
+		<h5 style="color: #008cba"><%= food[:name] %></h5>
+		</a>
+		<p><%= food[:description] %></p>
+		</center>
+	</div>
 <% end %>

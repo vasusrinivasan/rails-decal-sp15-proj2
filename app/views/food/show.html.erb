@@ -1,10 +1,18 @@
-<h2><%= @food.name %></h2>
-<img src= <%= @food.imageurl %> style="width: 50%; height: 50%" />
+<div style="width: 400px; height: 350px; display: inline-block; margin: 50px">
+	<img src= <%= @food.imageurl %> style="max-width: 100%; max-height: 100%" />
+</div>
+
+<div style="width:400px; height:350px; display: inline-block; margin: 50px; vertical-align:middle">
+<h2><%= @food.name %></h2></center>
+
 <p><%= @food.description %></p>
 
-<%= link_to "Edit Food", edit_food_path(@food.id) %>
-<%= link_to "Delete Food", food_path(:id => @food.id), method: :delete %>
-<%= link_to "Back", food_index_path() %>
+<li><%= link_to "Edit This Food", edit_food_path(@food.id) %></li>
+<li><%= link_to "Delete This Food", food_path(:id => @food.id), method: :delete %></li>
+<br />
+<br />
+<%= link_to "<< Back to Gallery", food_index_path() %>
+</div>
 
 <% @comments.each do |comment| %>
   <p><%= comment.content %>
@@ -15,3 +23,4 @@
   Comment: <%= f.text_field :content %>
   <br><%= f.submit "Post Comment" %>
 <% end %>
+</div>

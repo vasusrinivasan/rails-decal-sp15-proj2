@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users
   resources :food
   # get 'food/:id/delete' => 'food#delete', :as => :food_delete
   post 'food/:id/comment_create' => 'comment#create', :as => :comment_create
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  root to: 'pages#home'
   get '/' => 'pages#home'
 
 end

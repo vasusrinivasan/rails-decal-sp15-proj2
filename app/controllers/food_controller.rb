@@ -15,7 +15,7 @@ class FoodController < ApplicationController
   def create
     @food = Food.new(food_params)
     if @food.save
-      redirect_to(:action => 'index')
+      redirect_to(root_path)
     else
       render('new')
     end
@@ -30,7 +30,7 @@ class FoodController < ApplicationController
     if @food.update_attributes(food_params)
       redirect_to(:action => 'show', :id => @food.id)
     else
-      render('index')
+      redirect_to(root_path)
     end
   end
 

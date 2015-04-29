@@ -6,6 +6,7 @@ class FoodController < ApplicationController
   def show
     @food = Food.find(params[:id])
     @comments = Comment.where(:food_id => @food.id)
+    @food_user = User.where(:id => @food.user_id)
   end
   
   def new

@@ -5,6 +5,9 @@
 <div style="width: 700px; display: inline-block; margin:50px; vertical-align: middle;">
 
 <h2><%= @food.name %></h2></center>
+<% if @food.user_id %>
+  <h5>by <%= @food_user.name %></h5>
+<% end %>
 
 <p><%= @food.description %></p>
 

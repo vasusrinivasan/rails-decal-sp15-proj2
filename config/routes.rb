@@ -62,6 +62,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get '/' => 'pages#home'
+  get '/' => 'pages#home', :as => :home
 
 end

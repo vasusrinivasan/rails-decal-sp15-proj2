@@ -1,6 +1,7 @@
 class CommentController < ApplicationController
   def create
-    Comment.create(content: params[:comment][:content], food_id: params[:food_id], user_id: params[:user_id])
+    @user = User.find(params[:user_id])
+    Comment.create(content: params[:comment][:content], food_id: params[:food_id], user_id: @user.id, user_name: @user.name)
     redirect_to food_path(:id => params[:food_id]), method: :show
   end
 

@@ -1,19 +1,28 @@
 <h2><%= @food.name %></h2>
-<img src= <%= @food.imageurl %> style="width: 50%; height: 50%" />
-<p><%= @food.description %></p>
+<br><img src= <%= @food.imageurl %> style="width: 50%; height: 50%" />
+<p><%= @food.description %>
 
 <% if user_signed_in? %>
-  <%= link_to "Edit Food", edit_food_path(@food.id) %>
-  <%= link_to "Delete Food", food_path(:id => @food.id), method: :delete %>
+  <% if current_user.id == @food.id %>
+    <br><%= link_to "Edit", edit_food_path(@food.id) %>
+    <%= link_to "Delete", food_path(:id => @food.id), method: :delete %>
+    <%= link_to "Back", food_index_path() %>
+  <% else %>
+    <br><%= link_to "Back", food_index_path() %>
+  <% end %>
+<% else %>
+  <br><%= link_to "Back", food_index_path() %>
 <% end %>
-<%= link_to "Back", food_index_path() %>
+</p>
 
 <% @comments.each do |comment| %>
-  <p><%= comment.content %>
+  <p><%= comment.user_name %>: <%= comment.content %>
   <% if user_signed_in? %>
     <% if comment.user_id == current_user.id %>
-	  <br><%= link_to "Edit Comment", comment_change_path(:id => comment.id, :food_id => @food.id, :content => comment.content) %>
-	  <%= link_to "Delete Comment", comment_delete_path(:id => comment.id, :food_id => @food.id) %>
+	  <br><%= link_to "Edit", comment_change_path(:id => comment.id, :food_id => @food.id, :content => comment.content) %>
+	  <%= link_to "Delete", comment_delete_path(:id => comment.id, :food_id => @food.id) %>
+	<% elsif @food.user_id == current_user.id %>
+	  <br><%= link_to "Delete", comment_delete_path(:id => comment.id, :food_id => @food.id) %>
 	<% end %>
   <% end %>
   </p>
@@ -24,4 +33,7 @@
     Comment: <%= f.text_field :content %>
     <br><%= f.submit "Post Comment" %>
   <% end %>
+<% else %>
+  <br><%= link_to 'Log In', new_user_session_path %></li>
+  <br><%= link_to 'Join Food Blog', new_user_registration_path %></li>
 <% end %>

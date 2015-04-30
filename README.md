@@ -12,9 +12,11 @@
 *User*
  - has name, email, password, and many foods and comments
  - added validations
+
 *Food*
  - has name, image url, and description text
  - added validations
+
 *Comment*
  - has content (text) and belongs to a User
  - added validations

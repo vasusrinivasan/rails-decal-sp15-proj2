@@ -1,5 +1,5 @@
 # Foodie App Writeup
-*Title:* Foodie
+**Title:** Foodie
 Team Members: Kenneth Lam, Vasu Srinivasan, Mikaelo Espiritu, Judy Wang
 Demo Link: https://foodieblog.herokuapp.com/
 

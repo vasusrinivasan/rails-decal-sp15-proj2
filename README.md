@@ -1,6 +1,8 @@
 # Foodie App Writeup
 **Title:** Foodie
+
 **Team Members:** Kenneth Lam, Vasu Srinivasan, Mikaelo Espiritu, Judy Wang
+
 **Demo Link:** https://foodieblog.herokuapp.com/
 
 **Idea:** An application where users can create foods and other users can comment on the food. All food can be viewed in a gallery-like layout. Non-users can view the gallery but cannot create foods or leave comments. 
